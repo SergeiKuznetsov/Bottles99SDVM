@@ -10,5 +10,6 @@ public class MainPageTest extends BaseTest {
 
         openBaseURL();
         getDriver().getTitle();
+        getDriver().navigate().to("https://www.google.com/");
     }
 }

@@ -1,34 +1,34 @@
 name: Java Selenium Maven TestNG CI
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 env:
   JAVA_VERSION: 17
 
 jobs:
-  build:
+  run-test:
+    name: 'Run tests'
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK
+      - name: Install JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '17'
+             java-version: '17'
+             distribution: 'adopt'
 
-      - name: Build with Maven
-        run: mvn clean install
-
-      - name: Run TestsL
-        run: mvn test
+      - name: Cache maven
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('./pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
       - name: Archive Test Results
         uses: actions/upload-artifact@v2
