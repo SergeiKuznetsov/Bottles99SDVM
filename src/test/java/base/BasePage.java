@@ -14,10 +14,8 @@ import java.util.List;
 public abstract class BasePage {
 
     private final WebDriver driver;
-
     private WebDriverWait webDriverWait10;
     private Actions actions;
-
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -89,5 +87,6 @@ public abstract class BasePage {
         }
         return elements.size() == count;
     }
-
 }
+
+
