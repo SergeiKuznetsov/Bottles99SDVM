@@ -12,7 +12,7 @@ public class MainPageTest extends BaseTest {
         getDriver().getTitle();
         getDriver().navigate().to("https://www.google.com/");
         getDriver().navigate().to("https://redrover.school/");
-
-
+        getDriver().navigate().to("https://redrover.school/");
+        getDriver().navigate().to("https://redrover.school/");
     }
 }
