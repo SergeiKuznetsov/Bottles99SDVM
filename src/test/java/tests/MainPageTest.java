@@ -10,5 +10,7 @@ public class MainPageTest extends BaseTest {
 
         openBaseURL();
         getDriver().getTitle();
+
+
     }
 }
