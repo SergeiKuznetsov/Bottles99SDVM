@@ -14,7 +14,5 @@ public class MainPageTest extends BaseTest {
         getDriver().navigate().to("https://redrover.school/");
         getDriver().navigate().to("https://redrover.school/");
         getDriver().navigate().to("https://redrover.school/");
-
-
     }
 }
