@@ -11,5 +11,6 @@ public class MainPageTest extends BaseTest {
         openBaseURL();
         getDriver().getTitle();
         getDriver().navigate().to("https://www.google.com/");
+        getDriver().navigate().to("https://www.ups.com/track?loc=en_US&requester=ST/trackdetails");
     }
 }
