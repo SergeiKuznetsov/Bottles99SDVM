@@ -17,5 +17,7 @@ public class MainPageTest extends BaseTest {
     public void checkTheNewTest() {
         openBaseURL();
         getDriver().navigate().to("https://docs.github.com");
+        getDriver().getTitle();
     }
+
 }
