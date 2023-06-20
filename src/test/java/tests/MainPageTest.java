@@ -19,5 +19,4 @@ public class MainPageTest extends BaseTest {
         getDriver().navigate().to("https://docs.github.com");
         getDriver().getTitle();
     }
-
 }
