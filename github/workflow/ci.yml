@@ -1,48 +1,48 @@
-name: Java Selenium Maven TestNG CI
 
-on:
-  pull_request:
-    branches: [main]
-
-env:
-  JAVA_VERSION: 17
-
-jobs:
-  run-test:
-    name: 'Run tests'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install JDK
-        uses: actions/setup-java@v2
-        with:
-             java-version: '17'
-             distribution: 'adopt'
-
-      - name: Cache maven
-        uses: actions/cache@v3
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('./pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-
-      - name: Archive Test Results
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: target/surefire-reports/
-
-      - name: Upload TestNG Reports
-        uses: mikepenz/action-test-reporter@v2
-        with:
-          files: target/surefire-reports/TEST-*.xml
-
-      - name: Maven test
-        run: mvn test
-        env:
-          CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless=new;--window-size=1920,1080
-          CI_RUN: true
+#name: Java Selenium Maven TestNG CI
+#
+#on:
+#  pull_request:
+#    branches: [main]
+#
+#env:
+#  JAVA_VERSION: 17
+#
+#jobs:
+#  run-test:
+#    name: 'Run tests'
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v2
+#
+#      - name: Install JDK
+#        uses: actions/setup-java@v2
+#        with:
+#             java-version: '17'
+#             distribution: 'adopt'
+#
+#      - name: Cache Maven
+#        uses: actions/cache@v2
+#        with:
+#          path: ~/.m2/repository
+#          key: ${{ runner.os }}-maven-${{ hashFiles('./pom.xml') }}
+#          restore-keys: ${{ runner.os }}-maven-
+#
+#      - name: Archive Test Results
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: test-results
+#          path: target/surefire-reports/
+#
+#      - name: Upload TestNG Reports
+#        uses: mikepenz/action-test-reporter@v2
+#        with:
+#          files: target/surefire-reports/TEST-*.xml
+#
+#      - name: Maven test
+#        run: mvn test
+#        env:
+#          CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless=new;--window-size=1920,1080
+#          CI_RUN: true
